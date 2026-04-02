@@ -1,0 +1,78 @@
+<!--
+    HoneyBuffMod - blocks.xml patch
+    
+    XPath patches for increasing honey drops when harvesting / destroying tree stumps.
+    
+    In 7 Days to Die the <drop> element on a block definition controls what falls out
+    when that block is harvested or destroyed.  Tree stumps use the event types:
+        "Harvest" – when the player axes / tools the stump
+        "Destroy" – when the block is fully removed / blown up
+    
+    Changes:
+      1. Increase the harvest drop probability of foodHoney on all tree-stump block
+         variants to make bee-hive stumps more rewarding.
+      2. Ensure that both common landscape stumps AND POI stumps benefit.
+-->
+<configs>
+
+    <!-- =========================================================
+         treeStump (standard landscape stump)
+         ========================================================= -->
+
+    <!-- If a Harvest drop for foodHoney already exists, increase its probability -->
+    <set xpath="/blocks/block[@name='treeStump']/drop[@event='Harvest'][@name='foodHoney']/@prob">0.65</set>
+    <!-- If the count attribute is also present, set a better range -->
+    <set xpath="/blocks/block[@name='treeStump']/drop[@event='Harvest'][@name='foodHoney']/@count">1,3</set>
+
+    <!-- Append a new Harvest drop entry only when none exists yet -->
+    <append xpath="/blocks/block[@name='treeStump'][not(drop[@event='Harvest'][@name='foodHoney'])]">
+        <drop event="Harvest" name="foodHoney" count="1,3" prob="0.65" />
+    </append>
+
+    <!-- Also cover the Destroy event so blowing up a stump still yields honey -->
+    <set xpath="/blocks/block[@name='treeStump']/drop[@event='Destroy'][@name='foodHoney']/@prob">0.40</set>
+
+    <append xpath="/blocks/block[@name='treeStump'][not(drop[@event='Destroy'][@name='foodHoney'])]">
+        <drop event="Destroy" name="foodHoney" count="1,2" prob="0.40" />
+    </append>
+
+    <!-- =========================================================
+         treeStumpPOI (Point-of-Interest variant – higher yields)
+         ========================================================= -->
+
+    <set xpath="/blocks/block[@name='treeStumpPOI']/drop[@event='Harvest'][@name='foodHoney']/@prob">0.80</set>
+    <set xpath="/blocks/block[@name='treeStumpPOI']/drop[@event='Harvest'][@name='foodHoney']/@count">1,3</set>
+
+    <append xpath="/blocks/block[@name='treeStumpPOI'][not(drop[@event='Harvest'][@name='foodHoney'])]">
+        <drop event="Harvest" name="foodHoney" count="1,3" prob="0.80" />
+    </append>
+
+    <set xpath="/blocks/block[@name='treeStumpPOI']/drop[@event='Destroy'][@name='foodHoney']/@prob">0.60</set>
+
+    <append xpath="/blocks/block[@name='treeStumpPOI'][not(drop[@event='Destroy'][@name='foodHoney'])]">
+        <drop event="Destroy" name="foodHoney" count="1,2" prob="0.60" />
+    </append>
+
+    <!-- =========================================================
+         Additional living/felled tree block variants that may
+         contain bee-hives (treeOakLeaf, treePineLeaf, etc. are
+         harvested with axes and can yield honey via the generic
+         harvest group).  We add a small chance here.
+         ========================================================= -->
+
+    <!-- Oak tree stump variant -->
+    <append xpath="/blocks/block[@name='treeStumpOak'][not(drop[@event='Harvest'][@name='foodHoney'])]">
+        <drop event="Harvest" name="foodHoney" count="1,2" prob="0.50" />
+    </append>
+
+    <!-- Pine tree stump variant -->
+    <append xpath="/blocks/block[@name='treeStumpPine'][not(drop[@event='Harvest'][@name='foodHoney'])]">
+        <drop event="Harvest" name="foodHoney" count="1,2" prob="0.50" />
+    </append>
+
+    <!-- Birch tree stump variant -->
+    <append xpath="/blocks/block[@name='treeStumpBirch'][not(drop[@event='Harvest'][@name='foodHoney'])]">
+        <drop event="Harvest" name="foodHoney" count="1,2" prob="0.50" />
+    </append>
+
+</configs>
