@@ -17,6 +17,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install xmllint
+        run: sudo apt-get install -y libxml2-utils
+
       - name: Validate XML files
         run: |
           set -euo pipefail
