@@ -24,7 +24,7 @@ A lightweight XML-only modlet for **7 Days to Die v2.6** that makes honey signif
 
 ```
 Mods/
-└── HoneyBuffMod/
+└── EasyHoney/
     ├── ModInfo.xml          ← Mod metadata (name, version, author)
     └── Config/
         ├── blocks.xml       ← XPath patches for tree-stump harvest/destroy drops
@@ -36,7 +36,7 @@ Mods/
 ## Installation
 
 1. Download or clone this repository.
-2. Copy the **`Mods/HoneyBuffMod`** folder into your game's `Mods` directory:
+2. Copy the **`Mods/EasyHoney`** folder into your game's `Mods` directory:
    - **Windows (Steam):** `C:\Program Files (x86)\Steam\steamapps\common\7 Days To Die\Mods\`
    - **Linux (Steam):** `~/.steam/steam/steamapps/common/7 Days To Die/Mods/`
    - **Dedicated Server:** `<server_root>/Mods/`

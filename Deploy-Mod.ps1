@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    Deploys the HoneyBuffMod modlet to a local 7 Days to Die dedicated server for testing.
+    Deploys the EasyHoney modlet to a local 7 Days to Die dedicated server for testing.
 
 .DESCRIPTION
     Copies the mod folder into the dedicated server's Mods directory. The script also
@@ -28,7 +28,7 @@
     Number of seconds to follow the server log before returning. Defaults to 30.
 
 .PARAMETER LogPattern
-    Regex used when tailing logs. Defaults to 'HoneyBuffMod'.
+    Regex used when tailing logs. Defaults to 'EasyHoney'.
 
 .EXAMPLE
     .\Deploy-Mod.ps1
@@ -55,7 +55,7 @@ param(
     [switch]$TailLog,
     [ValidateRange(5, 600)]
     [int]$TailLogSeconds = 30,
-    [string]$LogPattern = 'HoneyBuffMod'
+    [string]$LogPattern = 'EasyHoney'
 )
 
 function Test-IsWslPowerShell {
@@ -425,7 +425,7 @@ if (($Launch -or $Restart) -and -not (Test-Path $ServerExe)) {
 # ---------------------------------------------------------------------------
 Write-Step 'Deploying mod to dedicated server'
 
-$ModName   = 'HoneyBuffMod'
+$ModName   = 'EasyHoney'
 $SourceDir = $PSScriptRoot
 $DestDir   = Join-Path $ServerPath "Mods\$ModName"
 

@@ -40,7 +40,7 @@ jobs:
       - name: Package mod
         run: |
           MOD_VERSION="${{ steps.modversion.outputs.VERSION }}"
-          STAGING="staging/HoneyBuffMod"
+          STAGING="staging/EasyHoney"
 
           mkdir -p "${STAGING}/Config"
 
@@ -48,8 +48,8 @@ jobs:
           cp Config/* "${STAGING}/Config/"
 
           cd staging
-          zip -r "../HoneyBuffMod-v${MOD_VERSION}.zip" HoneyBuffMod/
-          echo "Created HoneyBuffMod-v${MOD_VERSION}.zip"
+          zip -r "../EasyHoney-v${MOD_VERSION}.zip" EasyHoney/
+          echo "Created EasyHoney-v${MOD_VERSION}.zip"
         working-directory: ${{ github.workspace }}
 
       - name: Create GitHub Release
@@ -58,25 +58,25 @@ jobs:
         run: |
           MOD_VERSION="${{ steps.modversion.outputs.VERSION }}"
           TAG="v${MOD_VERSION}"
-          ASSET="HoneyBuffMod-v${MOD_VERSION}.zip"
+          ASSET="EasyHoney-v${MOD_VERSION}.zip"
 
           gh release delete "${TAG}" --yes 2>/dev/null || true
           git push origin ":refs/tags/${TAG}" 2>/dev/null || true
 
           gh release create "${TAG}" "${ASSET}" \
-            --title "HoneyBuffMod ${TAG}" \
+            --title "EasyHoney ${TAG}" \
             --notes "## Easy Honey Mod ${TAG}
 
           Automated release built from \`main\` for **7 Days to Die v2.6**.
 
           ### Installation
           1. Download \`${ASSET}\` and unzip it.
-          2. Copy the \`HoneyBuffMod/\` folder into your game's or server's \`Mods/\` directory.
+          2. Copy the \`EasyHoney/\` folder into your game's or server's \`Mods/\` directory.
           3. Restart the game or server.
 
           ### What's inside
           \`\`\`
-          HoneyBuffMod/
+          EasyHoney/
           ├── ModInfo.xml
           └── Config/
               ├── blocks.xml
