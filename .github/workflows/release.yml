@@ -28,6 +28,9 @@ jobs:
           echo "VERSION=${VERSION}" >> "$GITHUB_OUTPUT"
           echo "Mod version: ${VERSION}"
 
+      - name: Install xmllint
+        run: sudo apt-get install -y libxml2-utils
+
       - name: Validate XML files
         run: |
           set -euo pipefail
