@@ -1,73 +1,26 @@
-<!--
-    EasyHoney - loot.xml patch
-    
-    XPath patches for increasing honey availability in loot containers.
-    
-    Changes:
-      1. Boost the probability of foodHoney in the existing medical loot group
-         (medicine cabinets, pop-n-pills, ambulances already reference this group)
-      2. Append foodHoney to the generic kitchen/cabinet loot group so it can also
-         appear in household cabinets and pantries
-      3. Add foodHoney to the trash/garbage loot group as a rare find (someone
-         discarded a jar they didn't need)
-      4. Add a dedicated honey loot group used by tree stumps at a higher rate
--->
+<!-- EasyHoney - loot.xml patch for 7DTD v2.6 -->
 <configs>
-
-    <!-- =========================================================
-         1. Increase honey probability in existing medical group
-            (groupMedicalSupplies is used by medicine cabinets,
-             Pop-N-Pills stores, and ambulance loot containers)
-         ========================================================= -->
-
-    <!-- If foodHoney already exists in groupMedicalSupplies, raise its probability -->
-    <set xpath="/lootcontainers/lootgroup[@name='groupMedicalSupplies']/item[@name='foodHoney']/@prob">0.25</set>
-
-    <!-- Fallback: if the entry does not exist yet, append it -->
-    <append xpath="/lootcontainers/lootgroup[@name='groupMedicalSupplies'][not(item[@name='foodHoney'])]">
+    <!-- Medicine cabinets: strong honey chance -->
+    <append xpath="/lootcontainers/lootgroup[@name='groupMedicineCabinet'][not(item[@name='foodHoney'])]">
         <item name="foodHoney" count="1,2" prob="0.25" />
     </append>
 
-    <!-- =========================================================
-         2. Add honey to kitchen / household cabinet loot groups
-            (players will occasionally find honey in kitchens)
-         ========================================================= -->
-    <append xpath="/lootcontainers/lootgroup[@name='groupFoodCabinet'][not(item[@name='foodHoney'])]">
+    <!-- Kitchen cupboards: moderate chance -->
+    <append xpath="/lootcontainers/lootgroup[@name='groupCupboard'][not(item[@name='foodHoney'])]">
         <item name="foodHoney" count="1" prob="0.10" />
     </append>
 
-    <append xpath="/lootcontainers/lootgroup[@name='groupFoodHouseCommon'][not(item[@name='foodHoney'])]">
+    <!-- Generic junk/trash shelves: low chance -->
+    <append xpath="/lootcontainers/lootgroup[@name='groupJunk'][not(item[@name='foodHoney'])]">
         <item name="foodHoney" count="1" prob="0.08" />
     </append>
 
-    <!-- =========================================================
-         3. Rare honey drop from trash / garbage containers
-            (someone threw away a jar they didn't finish)
-         ========================================================= -->
-    <append xpath="/lootcontainers/lootgroup[@name='groupLootTrash'][not(item[@name='foodHoney'])]">
+    <!-- Garbage bins and fast-food trash: rare chance -->
+    <append xpath="/lootcontainers/lootgroup[@name='groupGarbage'][not(item[@name='foodHoney'])]">
         <item name="foodHoney" count="1" prob="0.05" />
     </append>
 
-    <!-- =========================================================
-         4. Dedicated tree-stump loot group – boost honey drop rate.
-            The group name 'groupTreeStump' is referenced by the
-            treeStump block for its loot on destruction.
-            We raise its probability and also add it if missing.
-         ========================================================= -->
-
-    <!-- If the entry already exists, increase its probability -->
-    <set xpath="/lootcontainers/lootgroup[@name='groupTreeStump']/item[@name='foodHoney']/@prob">0.60</set>
-
-    <!-- If the entry does not exist yet, append it -->
-    <append xpath="/lootcontainers/lootgroup[@name='groupTreeStump'][not(item[@name='foodHoney'])]">
-        <item name="foodHoney" count="1,3" prob="0.60" />
+    <append xpath="/lootcontainers/lootgroup[@name='groupFastFoodGarbage'][not(item[@name='foodHoney'])]">
+        <item name="foodHoney" count="1" prob="0.05" />
     </append>
-
-    <!-- Also cover the POI-specific tree stump group if it exists -->
-    <set xpath="/lootcontainers/lootgroup[@name='groupTreeStumpPOI']/item[@name='foodHoney']/@prob">0.80</set>
-
-    <append xpath="/lootcontainers/lootgroup[@name='groupTreeStumpPOI'][not(item[@name='foodHoney'])]">
-        <item name="foodHoney" count="1,3" prob="0.80" />
-    </append>
-
 </configs>

@@ -463,10 +463,25 @@ if ($Restart) {
 
 if ($Launch) {
     Write-Step 'Launching dedicated server'
-    Write-Host "    Starting: $ServerLauncher"
+    Write-Host "    Starting: $ServerExe"
     $ServerLaunchTime = Get-Date
-    if ($ServerLauncher.EndsWith('.bat', [System.StringComparison]::OrdinalIgnoreCase)) {
-        $startedProcess = Start-Process -FilePath 'cmd.exe' -ArgumentList @('/k', $ServerLauncher) -WorkingDirectory $ServerPath -PassThru
+    if (Test-Path $ServerExe) {
+        $logFile = 'output_log_dedi__copilot.txt'
+        Set-Content -Path (Join-Path $ServerPath 'steam_appid.txt') -Value '251570' -NoNewline
+
+        $serverArgs = @(
+            '-batchmode',
+            '-nographics',
+            '-configfile=serverconfig.xml',
+            '-dedicated',
+            '-logfile', $logFile
+        )
+
+        $startedProcess = Start-Process -FilePath $ServerExe -ArgumentList $serverArgs -WorkingDirectory $ServerPath -PassThru
+        Write-Host "    Log file: $logFile"
+    } elseif ($ServerLauncher.EndsWith('.bat', [System.StringComparison]::OrdinalIgnoreCase)) {
+        # Quote the launcher path so cmd.exe can execute batch files in paths with spaces.
+        $startedProcess = Start-Process -FilePath 'cmd.exe' -ArgumentList @('/k', ('"{0}"' -f $ServerLauncher)) -WorkingDirectory $ServerPath -PassThru
     } else {
         $startedProcess = Start-Process -FilePath $ServerLauncher -WorkingDirectory $ServerPath -PassThru
     }
