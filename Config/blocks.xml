@@ -21,12 +21,12 @@
 
     <!-- Append a new Harvest drop entry only when none exists yet -->
     <append xpath="/blocks/block[@name='treeStump'][not(drop[@event='Harvest'][@name='foodHoney'])]">
-        <drop event="Harvest" name="foodHoney" count="1,2" prob="0.45" />
+        <drop event="Harvest" name="foodHoney" count="1,2" prob="0.40" />
     </append>
 
     <!-- Also cover the Destroy event so blowing up a stump still yields honey -->
     <append xpath="/blocks/block[@name='treeStump'][not(drop[@event='Destroy'][@name='foodHoney'])]">
-        <drop event="Destroy" name="foodHoney" count="1" prob="0.25" />
+        <drop event="Destroy" name="foodHoney" count="1" prob="0.22" />
     </append>
 
     <!-- =========================================================
@@ -34,11 +34,11 @@
          ========================================================= -->
 
     <append xpath="/blocks/block[@name='treeStumpPOI'][not(drop[@event='Harvest'][@name='foodHoney'])]">
-        <drop event="Harvest" name="foodHoney" count="1,2" prob="0.55" />
+        <drop event="Harvest" name="foodHoney" count="1,2" prob="0.50" />
     </append>
 
     <append xpath="/blocks/block[@name='treeStumpPOI'][not(drop[@event='Destroy'][@name='foodHoney'])]">
-        <drop event="Destroy" name="foodHoney" count="1" prob="0.35" />
+        <drop event="Destroy" name="foodHoney" count="1" prob="0.30" />
     </append>
 
 </configs>

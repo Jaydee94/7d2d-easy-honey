@@ -1,26 +1,26 @@
 <!-- EasyHoney - loot.xml patch for 7DTD v2.6 -->
 <configs>
-    <!-- Medicine cabinets: strong honey chance -->
+    <!-- Medicine cabinets: moderate honey chance -->
     <append xpath="/lootcontainers/lootgroup[@name='groupMedicineCabinet'][not(item[@name='foodHoney'])]">
-        <item name="foodHoney" count="1,2" prob="0.18" />
+        <item name="foodHoney" count="1,2" prob="0.08" />
     </append>
 
-    <!-- Kitchen cupboards: moderate chance -->
+    <!-- Kitchen cupboards: rare chance -->
     <append xpath="/lootcontainers/lootgroup[@name='groupCupboard'][not(item[@name='foodHoney'])]">
-        <item name="foodHoney" count="1" prob="0.07" />
+        <item name="foodHoney" count="1" prob="0.015" />
     </append>
 
-    <!-- Generic junk/trash shelves: low chance -->
+    <!-- Generic junk/trash shelves: very rare chance -->
     <append xpath="/lootcontainers/lootgroup[@name='groupJunk'][not(item[@name='foodHoney'])]">
-        <item name="foodHoney" count="1" prob="0.05" />
+        <item name="foodHoney" count="1" prob="0.008" />
     </append>
 
-    <!-- Garbage bins and fast-food trash: rare chance -->
+    <!-- Garbage bins and fast-food trash: extremely rare chance -->
     <append xpath="/lootcontainers/lootgroup[@name='groupGarbage'][not(item[@name='foodHoney'])]">
-        <item name="foodHoney" count="1" prob="0.03" />
+        <item name="foodHoney" count="1" prob="0.004" />
     </append>
 
     <append xpath="/lootcontainers/lootgroup[@name='groupFastFoodGarbage'][not(item[@name='foodHoney'])]">
-        <item name="foodHoney" count="1" prob="0.03" />
+        <item name="foodHoney" count="1" prob="0.004" />
     </append>
 </configs>

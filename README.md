@@ -8,14 +8,14 @@ A lightweight XML-only modlet for **7 Days to Die v2.6** that makes honey signif
 
 | Source | Vanilla Chance | Modded Chance |
 |---|---|---|
-| Tree Stump (landscape) - Harvest | ~20 % | **45 %** |
-| Tree Stump (landscape) - Destroy | ~20 % | **25 %** |
-| Tree Stump (POI) - Harvest | ~40 % | **55 %** |
-| Tree Stump (POI) - Destroy | ~40 % | **35 %** |
-| Medicine Cabinet loot group | low | **18 %** |
-| Kitchen Cupboard loot group | very low/none | **7 %** |
-| Junk / Trash Shelves loot group | none | **5 %** |
-| Garbage / Fast-Food Trash loot group | none | **3 %** |
+| Tree Stump (landscape) - Harvest | ~20 % | **40 %** |
+| Tree Stump (landscape) - Destroy | ~20 % | **22 %** |
+| Tree Stump (POI) - Harvest | ~40 % | **50 %** |
+| Tree Stump (POI) - Destroy | ~40 % | **30 %** |
+| Medicine Cabinet loot group | low | **8 %** |
+| Kitchen Cupboard loot group | very low/none | **1.5 %** |
+| Junk / Trash Shelves loot group | none | **0.8 %** |
+| Garbage / Fast-Food Trash loot group | none | **0.4 %** |
 
 ---
 
